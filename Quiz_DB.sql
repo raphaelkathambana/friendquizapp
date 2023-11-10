@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `Subject` (
 CREATE TABLE IF NOT EXISTS `Quiz` (
     `Quiz_ID` int(3) NOT NULL AUTO_INCREMENT,
     `Subject_ID` int(3),
+    `Teacher_ID` int(3),
     `Question` varchar(255),
     `Option-A` varchar(255),
     `Option-B` varchar(255),
@@ -46,6 +47,10 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
     
     PRIMARY KEY (`Quiz_ID`),
     
+    CONSTRAINT FK
+	FOREIGN KEY (`Subject_ID`)
+	REFERENCES `Subject` (`Subject_ID`)
+
     CONSTRAINT FK_0
 	FOREIGN KEY (`Subject_ID`)
 	REFERENCES `Subject` (`Subject_ID`)

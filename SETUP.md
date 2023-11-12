@@ -22,7 +22,7 @@
  >
  >```java
  >Properties mySql = new Properties();
- >try (FileReader in = new FileReader("db.properties")) {
+ >try (FileReader in = new FileReader("database.properties")) {
  >    mySql.load(in);
  >} catch (IOException e) {
  >    System.out.println("Error loading db.properties from classpath." + e);

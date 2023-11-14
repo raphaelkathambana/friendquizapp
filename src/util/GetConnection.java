@@ -13,7 +13,7 @@ public class GetConnection {
         private static GetConnection instance;
         private Connection connection;
 
-        private GetConnection() throws SQLException {
+        private GetConnection() {
             Properties mySql = new Properties();
             try (FileReader in = new FileReader("database.properties")) {
                 mySql.load(in);
@@ -34,7 +34,7 @@ public class GetConnection {
             return connection;
         }
 
-        public static GetConnection getInstance() throws SQLException {
+        public static GetConnection getInstance() {
             if (instance == null) {
                 instance = new GetConnection();
             }

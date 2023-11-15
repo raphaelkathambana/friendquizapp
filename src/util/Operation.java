@@ -1,15 +1,13 @@
 package util;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-// import util.GetConnection;
+import java.sql.Statement;
 
 public class Operation {
 
-    // public Operation(){
-        // }
-        
-        public void SignUp(String Name, String Email, String Pass, String Type) {
+    public void SignUp(String Name, String Email, String Pass, String Type) {
         GetConnection connection = GetConnection.getInstance();
 
         String query = "";
@@ -38,27 +36,35 @@ public class Operation {
         }
     }
 
+    int intId;
+    String theName, theEmail, thePass, theId;
+
     public void SignIn(String ID, String Pass, String Type) {
         GetConnection connection = GetConnection.getInstance();
-
+        
+        Statement Stat;
+        ResultSet rs;
         String query = "";
 
         if (Type == "Stud") {
-            query = "INSERT INTO Student (`Name`, `Email`, `Password`) VALUES (?, ?, ?);";
+            query = "SELECT * FROM Student WHERE Student_ID = " + ID + ";";
         } else if (Type == "Teach") {
-            query = "INSERT INTO Teacher (`Name`, `Email`, `Password`) VALUES (?, ?, ?);";
+            query = "SELECT * FROM Teacher WHERE Teacher_ID = " + ID + ";";
         }
 
-        PreparedStatement pStat;
+        System.out.println(query);
 
         try {
+            Stat = connection.getConnection().createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
+                    ResultSet.CONCUR_UPDATABLE);
+            rs = Stat.executeQuery(query);
 
-            pStat = connection.getConnection().prepareStatement(query);
-
-            // pStat.setString(1, Name);
-            // pStat.setString(2, Email);
-            // pStat.setString(3, Pass);
-            // pStat.executeUpdate();
+            rs.next();
+            intId = rs.getInt(1);
+            theName = rs.getString(2);
+            theEmail = rs.getString(3);
+            thePass = rs.getString(4);
+            theId = Integer.toString(intId);
 
             System.out.println("Inserting Works");
 
@@ -66,4 +72,21 @@ public class Operation {
             System.out.println("Error " + e.getMessage());
         }
     }
+
+    public String getId() {
+        return theId;
+    }
+
+    public String getName() {
+        return theName;
+    }
+
+    public String getEmail() {
+        return theEmail;
+    }
+
+    public String getPass() {
+        return thePass;
+    }
+
 }

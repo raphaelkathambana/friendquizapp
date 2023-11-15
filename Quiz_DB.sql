@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS `Quizify`;
+CREATE DATABASE IF NOT EXISTS `QuizzifyDB`;
     
-USE `Quizify`;
+USE `QuizzifyDB`;
 SELECT DATABASE();
 
 DROP TABLE IF EXISTS `Result`;  

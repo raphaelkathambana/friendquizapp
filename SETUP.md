@@ -9,7 +9,7 @@
 
 3. Create a db.properties file to store your jdbc credentials
 
- > db.properties
+ > database.properties
  >
  > ```properties
  >driverClassName = com.mysql.cj.jdbc.Driver

@@ -4,7 +4,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Properties;
 
@@ -43,23 +42,23 @@ public class GetConnection {
         
         
 
-        public void StudLogin(String ID, String Name, String Email, String Pass) {
-        String query = "INSERT INTO Student (ID, Name, Email, Pass) VALUES (?, ?, ?, ?);";
-        PreparedStatement pStat;
+    //     public void StudLogin(String ID, String Name, String Email, String Pass) {
+    //     String query = "INSERT INTO Student (ID, Name, Email, Pass) VALUES (?, ?, ?, ?);";
+    //     PreparedStatement pStat;
 
-        try {
-            pStat = connection.prepareStatement(query);
+    //     try {
+    //         pStat = connection.prepareStatement(query);
 
-            pStat.setString(1, ID);
-            pStat.setString(2, Name);
-            pStat.setString(3, Email);
-            pStat.setString(4, Pass);
-            pStat.executeUpdate();
+    //         pStat.setString(1, ID);
+    //         pStat.setString(2, Name);
+    //         pStat.setString(3, Email);
+    //         pStat.setString(4, Pass);
+    //         pStat.executeUpdate();
 
-            System.out.println("Inserting Works");
+    //         System.out.println("Inserting Works");
 
-        } catch (SQLException e) {
-            System.out.println("Error " + e.getMessage());
-        }
-    }
+    //     } catch (SQLException e) {
+    //         System.out.println("Error " + e.getMessage());
+    //     }
+    // }
 }

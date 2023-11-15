@@ -10,7 +10,9 @@ public class App {
         SwingUtilities.invokeLater(QuizCreationUI::new);
 
         // you should use this to make a new connection
+
         GetConnection connection = GetConnection.getInstance();
+        
         // oh and also don't add any other code to that file...
         // any other sql related stuff should have it's own class
     }

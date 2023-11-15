@@ -1,6 +1,9 @@
 package auth;
 
 import javax.swing.*;
+
+import util.Operation;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -8,39 +11,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class SignUp extends JFrame implements ActionListener, FocusListener {
+public class SignUpTeach extends JFrame implements ActionListener, FocusListener {
+
+    Operation O = new Operation();
 
     char[] focused = { '0', '0', '0', '0' };
     boolean empty = false;
 
-    static String userType;
-
-    public static void setUser(String Type) {
-        userType = Type;
-    }
-
-    public static String getUser() {
-        return userType;
-    }
+    String userType = "Teach";
 
     JButton ph, submit, clear, info;
     JLabel Title, Instruction;
-    JTextField ID, Name, Email, Pass;
+    JTextField Name, Email, Pass;
     Font fntP = new Font("Century Gothic", Font.PLAIN, 15);
     Font fntB = new Font("Century Gothic", Font.BOLD, 15);
 
-    public void loginDetail() {
+    public void SignUpDetail() {
 
         ph = new JButton();
         add(ph);
 
-        ID = new JTextField();
-        ID.setFont(fntP);
-        ID.setForeground(Color.GRAY);
-        ID.setText("  ID");
-        ID.setBounds(60, 100, 270, 30);
-        ID.addFocusListener(this);
-        add(ID);
 
         Name = new JTextField();
         Name.setFont(fntP);
@@ -80,48 +70,32 @@ public class SignUp extends JFrame implements ActionListener, FocusListener {
 
     }
 
-    public SignUp() {
+    public SignUpTeach() {
 
-        // GetConnection O = GetConnection.getInstance();
-
-        setTitle("Login");
+        setTitle("SignUp");
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(260, 40, 650, 600);
 
-        if (getUser() == "Stud") {
-            Title = new JLabel();
-            Title.setFont(fntB);
-            Title.setBounds(180, 20, 1000, 40);
-            Title.setText("Student Login");
-            add(Title);
-
-            loginDetail();
-        }
-
-        else if (getUser() == "Teach") {
             Title = new JLabel();
             Title.setFont(fntB);
             Title.setBounds(180, 20, 1000, 40);
             Title.setText("Teacher Login");
             add(Title);
 
-            loginDetail();
+            SignUpDetail();
 
-        }
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == submit) {
-            String theID = ID.getText();
+            
             String theName = Name.getText();
             String theEmail = Email.getText();
             String thePass = Pass.getText();
 
-            if (theID.isEmpty() || focused[0] == '0')
-                empty = true;
 
             if (theName.isEmpty() || focused[1] == '0')
                 empty = true;
@@ -134,7 +108,7 @@ public class SignUp extends JFrame implements ActionListener, FocusListener {
 
             if (empty == false) {
                 try {
-                    // O.StudLogin(theID, theName, theEmail, thePass);
+                    O.SignUp(theName, theEmail, thePass, userType);
                     JOptionPane.showMessageDialog(this, "Loged in!");
                 } catch (NumberFormatException NumErr) {
                     JOptionPane.showMessageDialog(this, "Please Write Your Details Properly");
@@ -146,7 +120,6 @@ public class SignUp extends JFrame implements ActionListener, FocusListener {
 
         }
         if (e.getSource() == clear) {
-            ID.setText("");
             Name.setText("");
             Email.setText("");
             Pass.setText("");
@@ -155,11 +128,7 @@ public class SignUp extends JFrame implements ActionListener, FocusListener {
 
     @Override
     public void focusGained(FocusEvent e) {
-        if (e.getSource() == ID && focused[0] == '0') {
-            ID.setText("");
-            ID.setForeground(Color.BLACK);
-            focused[0] = '1';
-        }
+
         if (e.getSource() == Name && focused[1] == '0') {
             Name.setText("");
             Name.setForeground(Color.BLACK);

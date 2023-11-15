@@ -63,16 +63,17 @@ public class UserType extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+        
         if (e.getSource() == Stud) {
-            SignUp.setUser("Stud");
-            SignUp L = new SignUp();
-            L.setVisible(true);
+            // SignUp.setUser("Stud");
+            // SignUp Up = new SignUp();
+            // Up.setVisible(true);
             this.setVisible(false);
         }
         if (e.getSource() == Teach){
-            SignUp.setUser("Teach");
-            SignUp R = new SignUp();
-            R.setVisible(true);
+            SignInTeach In = new SignInTeach();
+            In.setVisible(true);
             this.setVisible(false);
         }
     }

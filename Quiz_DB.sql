@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS `Student` (
     `Email` varchar(80),
     `Password` varchar(25),
     PRIMARY KEY (`Student_ID`)
-);
+)AUTO_INCREMENT=001;
 
 
 CREATE TABLE IF NOT EXISTS `Teacher` (
@@ -25,14 +25,14 @@ CREATE TABLE IF NOT EXISTS `Teacher` (
     `Email` varchar(80),
     `Password` varchar(25),
     PRIMARY KEY (`Teacher_ID`)
-);
+)AUTO_INCREMENT=001;
 
 
 CREATE TABLE IF NOT EXISTS `Subject` (
     `Subject_ID` int(3) NOT NULL AUTO_INCREMENT,
     `Name` varchar(40),
     PRIMARY KEY (`Subject_ID`)
-);
+)AUTO_INCREMENT=001;
 
 
 CREATE TABLE IF NOT EXISTS `Quiz` (
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
     CONSTRAINT FK_0
 	FOREIGN KEY (`Teacher_ID`)
 	REFERENCES `Teacher` (`Teacher_ID`)
-);
+)AUTO_INCREMENT=001;
 
 
 CREATE TABLE IF NOT EXISTS `Result` (
@@ -71,4 +71,4 @@ CREATE TABLE IF NOT EXISTS `Result` (
     CONSTRAINT FK_2
 	FOREIGN KEY (`Student_ID`)
 	REFERENCES `Student` (`Student_ID`)
-);
+)AUTO_INCREMENT=001;

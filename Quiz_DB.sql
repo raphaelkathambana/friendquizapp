@@ -49,11 +49,11 @@ CREATE TABLE IF NOT EXISTS `Quiz` (
     
     CONSTRAINT FK
 	FOREIGN KEY (`Subject_ID`)
-	REFERENCES `Subject` (`Subject_ID`)
+	REFERENCES `Subject` (`Subject_ID`),
 
     CONSTRAINT FK_0
-	FOREIGN KEY (`Subject_ID`)
-	REFERENCES `Subject` (`Subject_ID`)
+	FOREIGN KEY (`Teacher_ID`)
+	REFERENCES `Teacher` (`Teacher_ID`)
 );
 
 

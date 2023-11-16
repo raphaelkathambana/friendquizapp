@@ -11,14 +11,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class SignUpTeach extends JFrame implements ActionListener, FocusListener {
+public class SignUpStud extends JFrame implements ActionListener, FocusListener {
 
     Operation O = new Operation();
 
     char[] focused = { '0', '0', '0', '0' };
     boolean empty = false;
 
-    String userType = "Teach";
+    String userType = "Stud";
 
     JButton ph, submit, clear, info;
     JLabel Title, Instruction;
@@ -70,7 +70,7 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
 
     }
 
-    public SignUpTeach() {
+    public SignUpStud() {
 
         setTitle("SignUp");
         setLayout(null);
@@ -80,7 +80,7 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
             Title = new JLabel();
             Title.setFont(fntB);
             Title.setBounds(180, 20, 1000, 40);
-            Title.setText("Teacher SignUp");
+            Title.setText("Student SignUp");
             add(Title);
 
             SignUpDetail();
@@ -110,10 +110,6 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
                 try {
                     O.SignUp(theName, theEmail, thePass, userType);
                     JOptionPane.showMessageDialog(this, "Loged in!");
-
-                    UserType UT = new UserType();
-                    UT.setVisible(true);
-                    this.setVisible(false);
                 } catch (NumberFormatException NumErr) {
                     JOptionPane.showMessageDialog(this, "Please Write Your Details Properly");
                 }

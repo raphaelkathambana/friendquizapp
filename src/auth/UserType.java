@@ -30,12 +30,7 @@ public class UserType extends JFrame implements ActionListener {
         Instruction = new JLabel();
         Instruction.setFont(new Font("Century Gothic", Font.PLAIN, 15));
         Instruction.setBounds(110, 50, getWidth(), 40);
-        Instruction.setText("The perfect place to learn about our exciting clubs");
-        add(Instruction);
-        Instruction = new JLabel();
-        Instruction.setFont(new Font("Century Gothic", Font.PLAIN, 15));
-        Instruction.setBounds(180, 70, getWidth(), 40);
-        Instruction.setText("Select the Club you want to join!");
+        Instruction.setText("Time to take a quiz!! ");
         add(Instruction);
 
         Stud = new JButton("Student");
@@ -66,9 +61,8 @@ public class UserType extends JFrame implements ActionListener {
         
         
         if (e.getSource() == Stud) {
-            // SignUp.setUser("Stud");
-            // SignUp Up = new SignUp();
-            // Up.setVisible(true);
+            SignInStud In = new SignInStud();
+            In.setVisible(true);
             this.setVisible(false);
         }
         if (e.getSource() == Teach){

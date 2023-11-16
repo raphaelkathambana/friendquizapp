@@ -11,16 +11,16 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class SignInTeach extends JFrame implements ActionListener, FocusListener {
+public class SignInStud extends JFrame implements ActionListener, FocusListener {
 
     Operation O = new Operation();
 
     char[] focused = { '0', '0' };
     boolean empty = false;
 
-    String userType = "Teach";
+    String userType = "Stud";
 
-    JButton ph, signUp, submit, clear, info;
+    JButton ph, submit, clear, info;
     JLabel Title, Instruction;
     JTextField ID, Pass;
     Font fntP = new Font("Century Gothic", Font.PLAIN, 15);
@@ -47,11 +47,11 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
         Pass.addFocusListener(this);
         add(Pass);
 
-        signUp = new JButton("Don't Have an account? Signin!");
-        signUp.setBackground(Color.WHITE);
-        signUp.setBounds(60, 300, 290, 30);
-        add(signUp);
-        signUp.addActionListener(this);
+        // signUp = new JButton("Don't Have an account? Signin!");
+        // signUp.setBackground(Color.WHITE);
+        // signUp.setBounds(60, 300, 290, 30);
+        // add(signUp);
+        // signUp.addActionListener(this);
 
         submit = new JButton("Submit");
         submit.setBackground(Color.WHITE);
@@ -67,7 +67,7 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
 
     }
 
-    public SignInTeach() {
+    public SignInStud() {
 
         setTitle("SignIn");
         setLayout(null);
@@ -77,7 +77,7 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
         Title = new JLabel();
         Title.setFont(fntB);
         Title.setBounds(180, 20, 1000, 40);
-        Title.setText("Teacher Login");
+        Title.setText("Student Login");
         add(Title);
 
         SigninDetail();
@@ -86,11 +86,11 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == signUp) {
-            SignUpTeach Up = new SignUpTeach();
-            Up.setVisible(true);
-            this.setVisible(false);
-        }
+        // if (e.getSource() == signUp) {
+        //     SignUpTeach Up = new SignUpTeach();
+        //     Up.setVisible(true);
+        //     this.setVisible(false);
+        // }
         if (e.getSource() == submit) {
             String theID = ID.getText();
             String thePass = Pass.getText();
@@ -107,7 +107,7 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
                 if (theID.equals(O.getId()) && thePass.equals(O.getPass())) {
                     JOptionPane.showMessageDialog(this, "Loged in!");
 
-                    WelcomeTeach Wel = new WelcomeTeach();
+                    WelcomeStud Wel = new WelcomeStud();
                     Wel.setVisible(true);
                     this.setVisible(false);
                 } else {

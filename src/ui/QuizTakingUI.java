@@ -69,6 +69,7 @@ public class QuizTakingUI {
             timerLabel.setText("Time Remaining: " + timeRemaining + " seconds");
             if (timeRemaining <= 0) {
                 showNextQuestion();
+                Logger.getLogger(QuizTakingUI.class.getName()).info("Timer Started");
             }
         });
 
@@ -122,6 +123,7 @@ public class QuizTakingUI {
 
         optionGroup.clearSelection();
         frame.revalidate();
+        Logger.getLogger(QuizTakingUI.class.getName()).log(Level.INFO, "Question Updated");
     }
 
     private void processAnswer(int selectedOptionIndex, int correctAnswerIndex) {

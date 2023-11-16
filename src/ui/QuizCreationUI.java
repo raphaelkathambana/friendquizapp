@@ -76,6 +76,7 @@ public class QuizCreationUI extends JFrame {
         buttonPanel.add(finishButton);
 
         add(buttonPanel, BorderLayout.SOUTH);
+        setVisible(true);
     }
 
     private void addQuestion() {

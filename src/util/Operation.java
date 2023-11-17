@@ -7,8 +7,8 @@ import java.sql.Statement;
 
 public class Operation {
 
+    GetConnection connection = GetConnection.getInstance();
     public void SignUp(String Name, String Email, String Pass, String Type) {
-        GetConnection connection = GetConnection.getInstance();
 
         String query = "";
 
@@ -40,7 +40,6 @@ public class Operation {
     String theName, theEmail, thePass;
 
     public void SignIn(int ID, String Pass, String Type) {
-        GetConnection connection = GetConnection.getInstance();
         
         Statement Stat;
         ResultSet rs;
@@ -73,9 +72,48 @@ public class Operation {
         }
     }
 
-    // public String getId() {
-    //     return theId;
-    // }
+
+    public String getStrId(String Type) {
+        
+        Statement Stat;
+        ResultSet rs;
+
+        int nowId = 0;
+        String query = "";
+        // String query = "select CID from login.clients where CID =(select max(CID) from clients)";
+        if (Type == "Stud") {
+            query = "SELECT Student_ID FROM Student WHERE Student_ID = (select max(Student_ID) from Student);";
+        } else if (Type == "Teach") {
+            query = "SELECT Teacher_ID FROM Teacher WHERE Teacher_ID = (select max(Teacher_ID) from Teacher);";
+        }
+
+
+        try {
+        Stat = connection.getConnection().createStatement();
+        rs = Stat.executeQuery(query);
+        while (rs.next())
+            nowId = rs.getInt(1);
+        } catch (SQLException e) {
+            System.out.println("Couldn't find number of user");
+        }
+
+        String StrId = "";
+        int digits = Integer.toString(nowId).trim().length();
+        
+        if (digits == 1)
+            StrId = "000" + nowId;
+        if (digits == 2)
+            StrId = "00" + nowId;
+        if (digits == 3)
+            StrId = "0" + nowId;
+        if (digits == 4)
+            StrId = "" + nowId;
+
+        System.out.println(StrId);
+        
+        
+        return StrId;
+    }
 
     public int getId() {
         return theId;

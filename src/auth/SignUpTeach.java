@@ -147,7 +147,7 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
             if (empty == false) {
                 try {
                     O.SignUp(theName, theEmail, thePass, userType);
-                    JOptionPane.showMessageDialog(this, "Loged in!");
+                    JOptionPane.showMessageDialog(this, "Sign Up Successful! Your ID number is: " + O.getStrId(userType));
 
                     UserType UT = new UserType();
                     UT.setVisible(true);

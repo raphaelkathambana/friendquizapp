@@ -144,7 +144,7 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
             if (empty == false) {
                 try {
                     O.SignUp(theName, theEmail, thePass, userType);
-                    JOptionPane.showMessageDialog(this, "Loged in!");
+                    JOptionPane.showMessageDialog(this, "Sign Up Successful! Your ID number is: " + O.getStrId(userType));
                 } catch (NumberFormatException NumErr) {
                     JOptionPane.showMessageDialog(this, "Please Write Your Details Properly");
                 }

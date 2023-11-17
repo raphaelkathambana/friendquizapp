@@ -17,12 +17,16 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
 
     char[] focused = { '0', '0', '0', '0' };
     boolean empty = false;
+    boolean PassSee = false;
 
     String userType = "Teach";
 
     JButton ph, submit, clear, back;
     JLabel Title, Instruction;
-    JTextField Name, Email, Pass;
+    JTextField Name, Email;
+    JPasswordField Pass;
+    JRadioButton pw;
+
     Font fntP = new Font("Century Gothic", Font.PLAIN, 15);
     Font fntB = new Font("Century Gothic", Font.BOLD, 15);
 
@@ -48,14 +52,22 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
         Email.addFocusListener(this);
         add(Email);
 
-        Pass = new JTextField();
+        Pass = new JPasswordField();
         Pass.setFont(fntP);
         Pass.setForeground(Color.GRAY);
         Pass.setText("  Password");
         Pass.setBounds(60, 220, 270, 30);
         Pass.addFocusListener(this);
         add(Pass);
+        if (focused[2] == '0'){
+            Pass.setEchoChar((char) 0);
+        }
 
+        pw = new JRadioButton("Show Password", false);
+        pw.setFont(fntP);
+        pw.setBounds(360, 220, 270, 30);
+        pw.addActionListener(this);
+        add(pw);
 
         back = new JButton("Back");
         back.setBackground(Color.WHITE);
@@ -98,6 +110,18 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if (focused[2] == '1') {
+            if (e.getSource() == pw) {
+                if (PassSee == false) {
+                    PassSee = true;
+                    Pass.setEchoChar((char) 0);
+                } else if (PassSee == true) {
+                    PassSee = false;
+                    Pass.setEchoChar('•');
+                }
+            }
+        }
+
         if (e.getSource() == back){
             SignInTeach In = new SignInTeach();
             In.setVisible(true);
@@ -108,7 +132,7 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
             
             String theName = Name.getText();
             String theEmail = Email.getText();
-            String thePass = Pass.getText();
+            String thePass = String.valueOf(Pass.getPassword());
 
 
             if (theName.isEmpty() || focused[0] == '0')
@@ -163,6 +187,7 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
         if (e.getSource() == Pass && focused[2] == '0') {
             Pass.setText("");
             Pass.setForeground(Color.BLACK);
+            Pass.setEchoChar('•');
             focused[2] = '1';
         }
     }

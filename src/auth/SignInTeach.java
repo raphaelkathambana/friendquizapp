@@ -129,9 +129,16 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
             this.setVisible(false);
         }
         if (e.getSource() == submit) {
-            String strID = ID.getText();
-            int theID = Integer.valueOf(strID);
+            String strID = "";
+            int theID = 0;
             String thePass = String.valueOf(Pass.getPassword());
+
+            try {
+                strID = ID.getText();
+                theID = Integer.valueOf(strID);
+            } catch (NumberFormatException ex) {
+                
+            }
 
             if (strID.isEmpty() || focused[0] == '0')
                 empty = true;

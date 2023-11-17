@@ -48,7 +48,7 @@ public class WelcomeTeach extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == signUpStud) {
-            SignUpTeach Up = new SignUpTeach();
+            SignUpStud Up = new SignUpStud();
             Up.setVisible(true);
             this.setVisible(false);
         }

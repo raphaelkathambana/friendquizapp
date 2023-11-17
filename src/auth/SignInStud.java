@@ -117,10 +117,11 @@ public class SignInStud extends JFrame implements ActionListener, FocusListener 
             this.setVisible(false);
         }
         if (e.getSource() == submit) {
-            String theID = ID.getText();
+            String strID = ID.getText();
+            int theID = Integer.valueOf(strID);
             String thePass = String.valueOf(Pass.getPassword());
 
-            if (theID.isEmpty() || focused[0] == '0')
+            if (strID.isEmpty() || focused[0] == '0')
                 empty = true;
 
             if (thePass.isEmpty() || focused[1] == '0')
@@ -129,7 +130,7 @@ public class SignInStud extends JFrame implements ActionListener, FocusListener 
             if (empty == false) {
 
                 O.SignIn(theID, thePass, userType);
-                if (theID.equals(O.getId()) && thePass.equals(O.getPass())) {
+                if (theID == O.getId() && thePass.equals(O.getPass())) {
                     JOptionPane.showMessageDialog(this, "Loged in!");
 
                     WelcomeStud Wel = new WelcomeStud();

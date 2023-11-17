@@ -36,10 +36,10 @@ public class Operation {
         }
     }
 
-    int intId;
-    String theName, theEmail, thePass, theId;
+    int theId;
+    String theName, theEmail, thePass;
 
-    public void SignIn(String ID, String Pass, String Type) {
+    public void SignIn(int ID, String Pass, String Type) {
         GetConnection connection = GetConnection.getInstance();
         
         Statement Stat;
@@ -60,11 +60,11 @@ public class Operation {
             rs = Stat.executeQuery(query);
 
             rs.next();
-            intId = rs.getInt(1);
+            theId = rs.getInt(1);
             theName = rs.getString(2);
             theEmail = rs.getString(3);
             thePass = rs.getString(4);
-            theId = Integer.toString(intId);
+            // theId = Integer.toString(intId);
 
             System.out.println("Inserting Works");
 
@@ -73,7 +73,11 @@ public class Operation {
         }
     }
 
-    public String getId() {
+    // public String getId() {
+    //     return theId;
+    // }
+
+    public int getId() {
         return theId;
     }
 

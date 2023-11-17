@@ -20,7 +20,7 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
 
     String userType = "Stud";
 
-    JButton ph, submit, clear, info;
+    JButton ph, submit, clear, back;
     JLabel Title, Instruction;
     JTextField Name, Email, Pass;
     Font fntP = new Font("Century Gothic", Font.PLAIN, 15);
@@ -30,7 +30,6 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
 
         ph = new JButton();
         add(ph);
-
 
         Name = new JTextField();
         Name.setFont(fntP);
@@ -56,17 +55,24 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
         Pass.addFocusListener(this);
         add(Pass);
 
+
+        back = new JButton("Back");
+        back.setBackground(Color.WHITE);
+        back.setBounds(60, 490, 90, 30);
+        back.addActionListener(this);
+        add(back);
+
         submit = new JButton("Submit");
         submit.setBackground(Color.WHITE);
         submit.setBounds(400, 490, 90, 30);
-        add(submit);
         submit.addActionListener(this);
+        add(submit);
 
         clear = new JButton("Clear");
         clear.setBackground(Color.WHITE);
         clear.setBounds(500, 490, 90, 30);
-        add(clear);
         clear.addActionListener(this);
+        add(clear);
 
     }
 
@@ -77,25 +83,29 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(260, 40, 650, 600);
 
-            Title = new JLabel();
-            Title.setFont(fntB);
-            Title.setBounds(180, 20, 1000, 40);
-            Title.setText("Student SignUp");
-            add(Title);
+        Title = new JLabel();
+        Title.setFont(fntB);
+        Title.setBounds(180, 20, 1000, 40);
+        Title.setText("Student SignUp");
+        add(Title);
 
-            SignUpDetail();
-
+        SignUpDetail();
 
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == back) {
+            WelcomeTeach Wel = new WelcomeTeach();
+            Wel.setVisible(true);
+            this.setVisible(false);
+        }
+        
         if (e.getSource() == submit) {
-            
+
             String theName = Name.getText();
             String theEmail = Email.getText();
             String thePass = Pass.getText();
-
 
             if (theName.isEmpty() || focused[0] == '0')
                 empty = true;

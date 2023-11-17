@@ -20,7 +20,7 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
 
     String userType = "Teach";
 
-    JButton ph, signUp, submit, clear, info;
+    JButton ph, signUp, submit, clear, back;
     JLabel Title, Instruction;
     JTextField ID, Pass;
     Font fntP = new Font("Century Gothic", Font.PLAIN, 15);
@@ -47,23 +47,30 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
         Pass.addFocusListener(this);
         add(Pass);
 
+
+        back = new JButton("Back");
+        back.setBackground(Color.WHITE);
+        back.setBounds(60, 490, 90, 30);
+        back.addActionListener(this);
+        add(back);
+
         signUp = new JButton("Don't Have an account? Signin!");
         signUp.setBackground(Color.WHITE);
         signUp.setBounds(60, 300, 290, 30);
-        add(signUp);
         signUp.addActionListener(this);
+        add(signUp);
 
         submit = new JButton("Submit");
         submit.setBackground(Color.WHITE);
         submit.setBounds(400, 490, 90, 30);
-        add(submit);
         submit.addActionListener(this);
+        add(submit);
 
         clear = new JButton("Clear");
         clear.setBackground(Color.WHITE);
         clear.setBounds(500, 490, 90, 30);
-        add(clear);
         clear.addActionListener(this);
+        add(clear);
 
     }
 
@@ -86,6 +93,11 @@ public class SignInTeach extends JFrame implements ActionListener, FocusListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == back) {
+            UserType UT = new UserType();
+            UT.setVisible(true);
+            this.setVisible(false);
+        }
         if (e.getSource() == signUp) {
             SignUpTeach Up = new SignUpTeach();
             Up.setVisible(true);

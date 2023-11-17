@@ -121,8 +121,10 @@ public class SignInStud extends JFrame implements ActionListener, FocusListener 
         }
 
         if (e.getSource() == clear) {
-            ID.setText("");
-            Pass.setText("");
+            if (focused[0] == '1')
+                ID.setText("");
+            if (focused[1] == '1')
+                Pass.setText(""); 
         }
     }
 

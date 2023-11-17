@@ -100,7 +100,7 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
             Wel.setVisible(true);
             this.setVisible(false);
         }
-        
+
         if (e.getSource() == submit) {
 
             String theName = Name.getText();
@@ -130,9 +130,12 @@ public class SignUpStud extends JFrame implements ActionListener, FocusListener 
 
         }
         if (e.getSource() == clear) {
-            Name.setText("");
-            Email.setText("");
-            Pass.setText("");
+            if (focused[0] == '1')
+                Name.setText("");
+            if (focused[1] == '1')
+                Email.setText("");
+            if (focused[2] == '1')
+                Pass.setText(""); 
         }
     }
 

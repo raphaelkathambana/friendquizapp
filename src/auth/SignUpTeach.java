@@ -138,9 +138,12 @@ public class SignUpTeach extends JFrame implements ActionListener, FocusListener
 
         }
         if (e.getSource() == clear) {
-            Name.setText("");
-            Email.setText("");
-            Pass.setText("");
+            if (focused[0] == '1')
+                Name.setText("");
+            if (focused[1] == '1')
+                Email.setText("");
+            if (focused[2] == '1')
+                Pass.setText(""); 
         }
     }
 

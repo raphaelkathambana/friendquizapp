@@ -11,7 +11,7 @@ import javax.swing.JLabel;
 public class WelcomeTeach extends JFrame implements ActionListener{
 
 
-    JButton ph, signUpStud, info;
+    JButton ph, signUpStud, back;
     JLabel Title, Instruction;
     // JTextField ID, Name, Email, Pass;
     Font fntP = new Font("Century Gothic", Font.PLAIN, 15);
@@ -24,8 +24,14 @@ public class WelcomeTeach extends JFrame implements ActionListener{
         signUpStud = new JButton("Sign Up a student!");
         signUpStud.setBackground(Color.WHITE);
         signUpStud.setBounds(60, 300, 290, 30);
-        add(signUpStud);
         signUpStud.addActionListener(this);
+        add(signUpStud);
+
+        back = new JButton("Back");
+        back.setBackground(Color.WHITE);
+        back.setBounds(60, 490, 90, 30);
+        back.addActionListener(this);
+        add(back);
 
     }
 
@@ -47,6 +53,12 @@ public class WelcomeTeach extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == back) {
+            UserType UT = new UserType();
+            UT.setVisible(true);
+            this.setVisible(false);
+        }
+
         if (e.getSource() == signUpStud) {
             SignUpStud Up = new SignUpStud();
             Up.setVisible(true);
